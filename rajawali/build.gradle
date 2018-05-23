@@ -1,0 +1,90 @@
+apply plugin: 'com.android.library'
+apply plugin: 'jacoco'
+apply plugin: 'signing'
+
+String getVersionString() {
+    //String v = VERSION_NAME.replaceAll(".(0)\$", "." + buildNumber())
+    //v = isTag() ? v : v + "-SNAPSHOT"
+    String v = "rajawali-0.1"+ "-SNAPSHOT"
+    return v
+}
+
+group = GROUP
+version = getVersionString()
+
+
+//if (isReleaseBuild()) {
+//    status = 'release'
+//} else {
+//    status = 'integration'
+//}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
+    jacocoClasspath = configurations['androidJacocoAnt']
+
+    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
+    def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", excludes: fileFilter)
+    def mainSrc = "${project.projectDir}/src/main/java"
+
+    sourceDirectories = files([mainSrc])
+    classDirectories = files([debugTree])
+    executionData = files(["${buildDir}/jacoco/testDebugUnitTest.exec",
+                           "${buildDir}/outputs/code-coverage/connected/coverage.ec"
+            ])
+}
+
+android {
+    //compileSdkVersion rootProject.compileSdk
+    //buildToolsVersion rootProject.buildTools
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        minSdkVersion 15
+        //targetSdkVersion rootProject.targetSdk
+       // versionCode rootProject.versionCode
+        //versionName rootProject.versionName
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    //compile project.depSupportAnnotations
+    compile 'com.android.support:support-annotations:23.1.1'
+    androidTestCompile 'junit:junit:4.12'
+
+    androidTestCompile 'com.android.support.test:runner:0.4'
+    // Set this dependency to use JUnit 4 rules
+    androidTestCompile 'com.android.support.test:rules:0.4'
+}
+
+//apply from: '../maven_push.gradle'

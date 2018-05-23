@@ -1,0 +1,4 @@
+/home/omair/Downloads/lsd_slam-master/lsd_slam_core/jni/src/build/CMakeFiles/rebuild_cache.dir
+/home/omair/Downloads/lsd_slam-master/lsd_slam_core/jni/src/build/CMakeFiles/LSD.dir
+/home/omair/Downloads/lsd_slam-master/lsd_slam_core/jni/src/build/CMakeFiles/edit_cache.dir
+/home/omair/Downloads/lsd_slam-master/lsd_slam_core/jni/src/build/CMakeFiles/lsdslam.dir

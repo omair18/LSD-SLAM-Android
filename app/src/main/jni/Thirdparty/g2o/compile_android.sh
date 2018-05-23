@@ -1,0 +1,1 @@
+cmake -DCMAKE_TOOLCHAIN_FILE=../script/android.toolchain.cmake -DANDROID_NDK=~/softwares/android-ndk-r14b/ -DCMAKE_BUILD_TYPE=Release -DANDROID_ABI="armeabi-v7a" -DANDROID_NATIVE_API_LEVEL=15 -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3 -DEIGEN_VERSION_OK=ON ..
