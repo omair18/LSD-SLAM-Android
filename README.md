@@ -17,3 +17,6 @@ I have used ndk-14b for the compilation.
 #NOTE: 
 
 Run ndk-build inside JNI folder before running this app since libLSD.so is missing here and it needs to be-recompiled. (Github doesn't allow a file > 50MB to be uploaded). 
+
+![ScreenShot](https://github.com/omair18/LSD-SLAM/blob/master/snap.png)
+
