@@ -14,9 +14,11 @@ All dependencies & libraries have been included in JNI folder. I have also place
 
 I have used ndk-14b for the compilation. 
 
-#NOTE: 
+#Recommended: 
+Run ndk-build inside JNI folder before running this app to get fresh compiled libraries.. 
 
-Run ndk-build inside JNI folder before running this app since libLSD.so is missing here and it needs to be-recompiled. (Github doesn't allow a file > 50MB to be uploaded). 
+#Note:
+All credit goes to authors of lsdslam. My contribution is only related to compilation for Android platform. 
 
 ![ScreenShot](https://github.com/omair18/LSD-SLAM/blob/master/snap.png)
 
